@@ -6,10 +6,6 @@ create database edunovawp8 collate Croatian_CI_AS;
 go
 use edunovawp8;
 
---drop database edunovawp8;
-
---use edunovawp8;
-
 create table smjerovi(
 sifra int not null primary key identity(1,1),
 naziv varchar(50) not null,
@@ -21,7 +17,7 @@ aktivan bit not null default 0
 create table grupe(
 sifra int not null primary key identity(1,1),
 naziv varchar(20) not null,
-smjer int not null,
+smjer int not null references smjerovi(sifra),
 predavac varchar(50)
 );
 
@@ -33,8 +29,8 @@ email varchar(100) null
 );
 
 create table clanovi(
-grupa int not null,
-polaznik int not null
+grupa int not null references grupe(sifra),
+polaznik int not null references polaznici(sifra)
 );
 
 use edunovawp8;
@@ -86,3 +82,4 @@ insert into clanovi (grupa, polaznik) values
 
 insert into clanovi (grupa,polaznik) values
 (3,7),(3,17),(3,27);
+
