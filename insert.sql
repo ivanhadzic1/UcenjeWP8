@@ -1,39 +1,6 @@
-﻿use master;
-go
-drop database if exists edunovawp8;
-go
-create database edunovawp8 collate Croatian_CI_AS;
-go
-use edunovawp8;
+﻿use edunovawp8;
 
-create table smjerovi(
-sifra int not null primary key identity(1,1),
-naziv varchar(50) not null,
-cijena decimal(18,2) null,
-datumpokretanja datetime null,
-aktivan bit not null default 0
-);
-
-create table grupe(
-sifra int not null primary key identity(1,1),
-naziv varchar(20) not null,
-smjer int not null references smjerovi(sifra),
-predavac varchar(50)
-);
-
-create table polaznici(
-sifra int not null primary key identity(1,1),
-ime varchar(50) not null,
-prezime varchar(50) not null,
-email varchar(100) null
-);
-
-create table clanovi(
-grupa int not null references grupe(sifra),
-polaznik int not null references polaznici(sifra)
-);
-
-use edunovawp8;
+select * from smjerovi;
 
 insert into smjerovi (naziv, cijena, datumpokretanja, aktivan)
 values ('Web programiranje', 1200.54, '2025-05-16 17:00:01', 1);
@@ -41,8 +8,12 @@ values ('Web programiranje', 1200.54, '2025-05-16 17:00:01', 1);
 insert into smjerovi (naziv)
 values ('Serviser'),('Web dizajn'),('Marketing');
 
+--select * from grupe
+
 insert into grupe (naziv,smjer)
 values ('WP8',1), ('WP7',1), ('S1',2);
+
+--select * from polaznici
 
 insert into polaznici (prezime, ime, email) values
 ('Gavran','Barbara','barbaragavran67@gmail.com'),
@@ -75,6 +46,8 @@ insert into polaznici (prezime, ime, email) values
 ('Mirković','Milivoje','daky696@gmail.com'),
 ('Andraković','Nenad','nenad.andrak@gmail.com');
 
+--select * from clanovi
+
 insert into clanovi (grupa, polaznik) values
 (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),
 (1,11),(1,12),(1,13),(1,14),(1,15),(1,16),(1,17),(1,18),(1,19),(1,20),
@@ -82,4 +55,3 @@ insert into clanovi (grupa, polaznik) values
 
 insert into clanovi (grupa,polaznik) values
 (3,7),(3,17),(3,27);
-
