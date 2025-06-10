@@ -2,8 +2,13 @@
 
 using Ucenje;
 
-E05UvjetnoGrananjeSwitch.Izvedi();
-
+E10ForEach.Izvedi();
+//E09DoWhile.Izvedi();
+//E08WhilePetlja.Izvedi();
+//E07ForPetlja.Izvedi();
+//E06Zad1.Izvedi();
+//06Nizovi.Izvedi();
+//E05UvjetnoGrananjeSwitch.Izvedi();
 //E04UvjetnoGrananjeIf.Izvedi();
 //E03Operatori.Izvedi();
 //E02Varijable.Izvedi();
